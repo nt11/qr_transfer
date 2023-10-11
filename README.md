@@ -18,8 +18,8 @@ Running each file without parameters will show a usage help line
 # Installation
 - On Ubuntu or MacOS:
 
-pip -m venv venv
-pip install -r requirements.txt
+`pip -m venv venv`
+`pip install -r requirements.txt`
 
 - On PC/ Windows
 Don't know
@@ -56,3 +56,11 @@ not found
 `diff input_file.txt output_file.txt`
 
 Output should be empty
+
+# Comments
+
+- Up to 255 QR files are supported
+- File order makes a difference! When downloading files make sure to label them xyz_0.jpeg, xyz_1.jpeg, etc. based on the order of creation
+- Both file order and checksums are checked and if there is any error, the read_qr.py program will report this error. There is no overall checksum, so if the number of files transferred was incorrect, the program will not know this.
+- Checked up to 512 bytes/QR code with iPhone13 max pro camera. Exceeding this number may cause QR codes to be transferred incorrectly
+- This entire code was coded swiftly (~2 hours) and testing was scarce. Proceed with caution.
