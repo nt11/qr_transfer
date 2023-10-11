@@ -64,3 +64,4 @@ Output should be empty
 - Both file order and checksums are checked and if there is any error, the read_qr.py program will report this error. There is no overall checksum, so if the number of files transferred was incorrect, the program will not know this.
 - Checked up to 512 bytes/QR code with iPhone13 max pro camera. Exceeding this number may cause QR codes to be transferred incorrectly
 - This entire code was coded swiftly (~2 hours) and testing was scarce. Proceed with caution.
+- All testing was done with Python 3.11 on Mac OS.
