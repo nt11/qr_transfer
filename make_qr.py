@@ -15,6 +15,7 @@ def usage(arg):
     """
     print("Usage:")
     print("%s <input_filename> <output_filename_without_extension> <len>" % arg[0])
+    print("len should be less than or equal to 967")
     sys.exit()
 
 
@@ -23,6 +24,11 @@ if __name__ == "__main__":
     if len(sys.argv) != 4:
         usage(sys.argv)
     chunk_len = int(sys.argv[3])
+    if chunk_len > 967:  # This threshold has been tested on synthetic files
+        print("Error: Chunk len has to be less than or equal to 967")
+        sys.exit()
+    if chunk_len > 512:
+        print("Wraning: Chunk len greater than 512 might not transfer well on (phone) camera!")
     print(
         "Running on file %s, output to file %s.png with chunk size = %d" % (sys.argv[1], sys.argv[2], int(sys.argv[3])))
     with open(sys.argv[1], "rb") as fid:
@@ -32,7 +38,7 @@ if __name__ == "__main__":
             if not raw_data:
                 break
             data = i.to_bytes(1) + raw_data  # add file serial
-            checksum = binascii.crc32(data) # debug
+            checksum = binascii.crc32(data)  # debug
             data = data + checksum.to_bytes(4)
 
             img = qrcode.make(base64.b64encode(data))

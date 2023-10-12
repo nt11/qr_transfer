@@ -39,6 +39,9 @@ if __name__ == "__main__":
             fname = "%s_%d.%s" % (sys.argv[1], i, sys.argv[2])
             print("reading %s" % fname)
             out = read_qr_code(fname)  # Decode QR file
+            if not out:
+                print ("Unable to read file %s" % fname)
+                sys.exit()
             data = base64.b64decode(out)  # extract data
             serial = data[0]
             if serial != i:

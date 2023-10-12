@@ -62,6 +62,8 @@ Output should be empty
 - Up to 255 QR files are supported
 - File order makes a difference! When downloading files make sure to label them xyz_0.jpeg, xyz_1.jpeg, etc. based on the order of creation
 - Both file order and checksums are checked and if there is any error, the read_qr.py program will report this error. There is no overall checksum, so if the number of files transferred was incorrect, the program will not know this.
-- Checked up to 512 bytes/QR code with iPhone13 max pro camera. Exceeding this number may cause QR codes to be transferred incorrectly
+- iPhone camera only works up to 512 bytes/QR image
+- Exceeding this number may cause QR codes to be transferred incorrectly
+- PNG codes work up to 967 bytes
 - This entire code was coded swiftly (~2 hours) and testing was scarce. Proceed with caution
 - All testing was done with Python 3.11 on Mac OS
